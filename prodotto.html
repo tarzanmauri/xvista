@@ -127,32 +127,42 @@
   p, li {
     font-size: 15px;
   }
-
-  /* === NAVBAR MOBILE ORDINATA === */
+  /* NAVBAR MOBILE SCORRIBILE */
   .nav {
-  position: static;
-  height: auto;
-  padding: 12px 0;
-}
+    position: fixed;          /* fissa in alto su telefono */
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding: 12px 0;
+    overflow-x: auto;         /* scorrimento orizzontale con dito */
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: rgba(0,0,0,0.75);
+    z-index: 999999;
+  }
 
+  .nav::-webkit-scrollbar {
+    display: none;            /* nasconde la barra */
+  }
 
-.nav-links {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 22px;
-}
-
+  .nav-links {
+    flex-direction: row;
+    flex-wrap: nowrap;        /* NON va a capo */
+    white-space: nowrap;
+    justify-content: flex-start;
+    gap: 20px;                /* un po' più spazio tra i link */
+    padding: 0 20px;          /* margine sinistro/destro per bellezza */
+    min-width: max-content;
+  }
 
   .nav-links a {
     font-size: 16px;
     white-space: nowrap;
   }
 }
-
   </style>
 </head>
-
 <body>
 
 <!-- NAVBAR -->

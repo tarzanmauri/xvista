@@ -121,31 +121,42 @@
     font-size: 15px;
   }
 
-  /* === NAVBAR MOBILE ORDINATA === */
+  /* NAVBAR MOBILE SCORRIBILE */
   .nav {
-  position: static;
-  height: auto;
-  padding: 12px 0;
-}
+    position: fixed;          /* rimane fissa in alto quando scorri la pagina */
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding: 12px 0;
+    overflow-x: auto;         /* permette di scorrere i link con il dito */
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: rgba(0,0,0,0.75);
+    z-index: 999999;
+  }
 
+  .nav::-webkit-scrollbar {
+    display: none;            /* nasconde la barra di scorrimento */
+  }
 
- .nav-links {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 22px;
-}
-
+  .nav-links {
+    flex-direction: row;
+    flex-wrap: nowrap;        /* i link NON vanno più a capo */
+    white-space: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 20px;
+    min-width: max-content;
+  }
 
   .nav-links a {
     font-size: 16px;
     white-space: nowrap;
   }
 }
-
   </style>
 </head>
-
 <body>
 
 <!-- NAVBAR -->

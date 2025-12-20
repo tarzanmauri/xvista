@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XvistA™ – Video</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #000;
@@ -14,7 +12,6 @@
       --accent: #ff0033;
       --soft: rgba(255,255,255,0.85);
     }
-
     body {
       margin: 0;
       background: var(--bg);
@@ -24,31 +21,42 @@
 
     /* NAVBAR */
     .nav {
+      position: fixed;
+      top: 0;
       width: 100%;
-      background: rgba(0,0,0,0.6);
+      height: 65px;
+      z-index: 999999;
       display: flex;
       justify-content: center;
-      padding: 12px 0;
+      align-items: center;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
     .nav-links {
       display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: 50px;
     }
 
     .nav-links a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
+      padding-bottom: 6px;
       border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      border-bottom: 2px solid var(--accent);
     }
 
     .nav-links a.active {
-      color: #fff;
+      color: #ffffff;
       border-bottom: 2px solid var(--accent);
     }
 
@@ -56,7 +64,7 @@
     .page {
       max-width: 1100px;
       margin: auto;
-      padding: 80px 20px;
+      padding: 100px 20px 80px; /* spazio extra per navbar fissa */
     }
 
     h1 {
@@ -96,25 +104,59 @@
       margin: 0;
       font-size: 14px;
       text-align: left;
+      color: var(--soft);
     }
 
     /* MOBILE */
     @media (max-width: 768px) {
-      .nav-links {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 22px;
-}
+      /* NAVBAR MOBILE SCORRIBILE */
+      .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: auto;
+        padding: 12px 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        background: rgba(0,0,0,0.75);
+        z-index: 999999;
+      }
 
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 0 20px;
+        min-width: max-content;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        white-space: nowrap;
+      }
+
+      .page {
+        padding: 90px 16px 70px;
+      }
 
       h1 {
         font-size: 28px;
       }
+
+      .video-card iframe {
+        height: 180px;
+      }
     }
   </style>
 </head>
-
 <body>
 
 <header class="nav">
@@ -145,6 +187,8 @@
       <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
       <p>Guida notturna e visibilità</p>
     </div>
+
+    <!-- Aggiungi altri video qui se vuoi -->
 
   </div>
 </div>

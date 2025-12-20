@@ -111,19 +111,34 @@
     box-sizing: border-box;
   }
 
-  /* === NAVBAR MOBILE ORDINATA === */
+    /* NAVBAR MOBILE SCORRIBILE */
   .nav {
+    position: fixed;          /* fissa in alto anche su telefono */
+    top: 0;
+    width: 100%;
     height: auto;
     padding: 12px 0;
+    overflow-x: auto;         /* permette di scorrere con il dito */
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: rgba(0,0,0,0.75);
+    z-index: 999999;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;            /* nasconde la barra di scorrimento */
   }
 
   .nav-links {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 22px;
-}
-
+    flex-direction: row;
+    flex-wrap: nowrap;        /* NON va più a capo */
+    white-space: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 20px;
+    min-width: max-content;
+  }
 
   .nav-links a {
     font-size: 16px;
@@ -132,7 +147,7 @@
 
   /* === CONTENUTO === */
   .page {
-    padding: 120px 20px 70px;
+    padding: 120px 20px 70px;   /* lascia spazio alla navbar fissa */
   }
 
   h1 {
@@ -148,9 +163,6 @@
     line-height: 1.6;
   }
 }
-
-
-
 </style>
 </head>
 
