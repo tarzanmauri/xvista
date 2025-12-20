@@ -455,45 +455,43 @@ if (toggleBtn) {
 /* === LAMPI CINEMATICI === */
 function lightningStrike() {
 
-  let flash1 = document.createElement("div");
-  flash1.style.position = "fixed";
-  flash1.style.top = 0;
-  flash1.style.left = 0;
-  flash1.style.width = "100vw";
-  flash1.style.height = "100vh";
-  flash1.style.background = "rgba(255,255,255," + (Math.random()*0.4 + 0.2) + ")";
-  flash1.style.zIndex = 5;
-  flash1.style.pointerEvents = "none";
-  flash1.style.transition = "opacity 0.25s ease";
-  document.body.appendChild(flash1);
+  let flash = document.createElement("div");
+  flash.style.position = "fixed";
+  flash.style.top = 0;
+  flash.style.left = 0;
+  flash.style.width = "100vw";
+  flash.style.height = "100vh";
 
-  setTimeout(() => { flash1.style.opacity = 0; }, 80);
-  setTimeout(() => { flash1.remove(); }, 350);
+  /* lampo soft */
+  flash.style.background = "rgba(255,255,255," + (Math.random() * 0.15 + 0.05) + ")";
+  flash.style.zIndex = 1;                 // dietro al contenuto
+  flash.style.pointerEvents = "none";
+  flash.style.opacity = "0";
+  flash.style.transition = "opacity 0.4s ease";
+
+  document.body.appendChild(flash);
+
+  // fade in leggero
+  requestAnimationFrame(() => {
+    flash.style.opacity = "1";
+  });
+
+  // fade out lento
+  setTimeout(() => {
+    flash.style.opacity = "0";
+  }, 120);
 
   setTimeout(() => {
-    let flash2 = document.createElement("div");
-    flash2.style.position = "fixed";
-    flash2.style.top = 0;
-    flash2.style.left = 0;
-    flash2.style.width = "100vw";
-    flash2.style.height = "100vh";
-    flash2.style.background = "rgba(255,255,255," + (Math.random()*0.5 + 0.4) + ")";
-    flash2.style.zIndex = 5;
-    flash2.style.pointerEvents = "none";
-    flash2.style.transition = "opacity 0.20s ease";
-    document.body.appendChild(flash2);
-
-    setTimeout(() => { flash2.style.opacity = 0; }, 60);
-    setTimeout(() => { flash2.remove(); }, 300);
-  }, Math.random()*120 + 50);
+    flash.remove();
+  }, 600);
 }
 
 /* === FREQUENZA LAMPI === */
 setInterval(() => {
-  if (Math.random() < 0.30) {
+  if (Math.random() < 0.15) {   // meno frequenti
     lightningStrike();
   }
-}, 1200);
+}, 1800);                       // più distanti
 
 </script>
 
