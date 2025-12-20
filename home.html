@@ -216,6 +216,9 @@ iframe {
 /* =========================
    MOBILE FIX DEFINITIVO
    ========================= */
+/* =========================
+   MOBILE FIX DEFINITIVO
+   ========================= */
 @media (max-width: 768px) {
 
   /* blocca scroll orizzontale */
@@ -227,6 +230,22 @@ iframe {
   * {
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  /* === NAVBAR MOBILE ORDINATA === */
+  .nav {
+    height: auto;
+    padding: 12px 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+    white-space: nowrap;
   }
 
   /* HERO */
@@ -297,6 +316,7 @@ iframe {
     max-width: 100%;
   }
 }
+
 
 </style>
 </head>
