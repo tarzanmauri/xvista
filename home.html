@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XvistA™ – The Future of Scooter Visibility</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #000;
+    --text: #fff;
+    --accent: #ff0033;
+    --soft: rgba(255,255,255,0.85);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Montserrat", sans-serif;
+    opacity: 0;
+    transition: opacity 1.8s ease;
+  }
+
+  body.fade-in { opacity: 1; }
+
+  /* === NAVBAR MINIMAL === */
+  .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 65px;
+    z-index: 999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 50px;
+  }
+
+  .nav-links a {
+    color: #ff0033;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+    transition: 0.25s ease;
+  }
+
+  .nav-links a:hover {
+    color: #ffffff;
+    border-bottom: 2px solid #ff0033;
+  }
+
+  .nav-links a.active {
+    color: #ffffff;
+    border-bottom: 2px solid #ff0033;
+  }
+
+  /* === CANVAS RAIN + LIGHTNING === */
+  #stormCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1 !important;
+    pointer-events: none;
+  }
+
+  /* === HERO === */
+  .hero {
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 20px;
+  }
+
+  .hero-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    animation: fadeUp 1.8s ease forwards 0.3s;
+    text-shadow: 0 0 25px rgba(255,255,255,0.7);
+  }
+
+  .hero-sub {
+    max-width: 850px;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--soft);
+    opacity: 0;
+    animation: fadeUp 1.8s ease forwards 0.7s;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeUp 1.8s ease forwards 1.1s;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.12em;
+    border: none;
+    transition: all .3s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255,0,51,0.6);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(255,0,51,1);
+  }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === VIDEO HERO LOOP === */
+.hero-video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 0px;     /* PRIMA era troppo giù */
+  padding-bottom: 0px;
+}
+
+/* video loop */
+.video-loop {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* sezioni generiche */
+section {
+  padding: 70px 10vw;   /* PRIMA 100px → ora tutto sale */
+  max-width: 1100px;
+  margin: auto;
+  line-height: 1.9;
+  font-size: 1.15rem;
+}
+
+/* sezione prodotto ancora più vicina al video */
+#prodotto {
+  padding-top: 50px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+}
+
+p {
+  margin-bottom: 18px;
+  color: var(--soft);
+}
+
+/* video youtube */
+.video-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+iframe {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  border-radius: 14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <nav class="nav-links">
+    <a href="home.html" class="active">Home</a>
+    <a href="chi-siamo.html">Chi siamo</a>
+  </nav>
+</header>
+
+<!-- CANVAS PER TEMPORALE -->
+<canvas id="stormCanvas"></canvas>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-title">XvistA™</div>
+  <div class="hero-sub">Il primo tergicristallo al mondo progettato esclusivamente per scooter. Visibilità totale, anche nel cuore della tempesta.</div>
+
+  <div class="hero-cta">
+    <button class="btn btn-primary" onclick="document.getElementById('prodotto').scrollIntoView({behavior:'smooth'})">Scopri XvistA™</button>
+    <button class="btn btn-ghost" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Guarda il video</button>
+  </div>
+</div>
+
+<!-- VIDEO HERO LOOP -->
+<section class="hero-video">
+  <video autoplay muted loop playsinline class="video-loop">
+    <source src="loop.mp4" type="video/mp4">
+    Il tuo browser non supporta il video HTML5.
+  </video>
+</section>
+
+
+<!-- SEZIONE PRODOTTO -->
+<section id="prodotto">
+  <h2>Vi presentiamo XvistA™</h2>
+
+  <p>Il primo tergicristallo al mondo progettato esclusivamente per scooter. Non un accessorio. Non un gadget. Una soluzione che non era mai esistita prima. Un’invenzione brevettata che introduce, per la prima volta nella storia, un nuovo modo di vivere la strada.</p>
+
+  <p>Per decenni milioni di motociclisti hanno affrontato la pioggia con rassegnazione: visiera bagnata, parabrezza offuscato, gocce che distorcono la strada, una mano che istintivamente si solleva per liberare la visuale, un secondo di distrazione che può cambiare tutto.</p>
+
+  <p>Oggi questa rassegnazione finisce.</p>
+
+  <p>XvistA™™, compatto, aerodinamico e silenzioso, è frutto di una progettazione accurata: motore miniaturizzato ad alta efficienza, braccetto a basso attrito in lega leggera, gomma tecnica studiata per garantire una pulizia perfetta anche ad alta velocità, aggancio universale progettato per integrarsi con i principali parabrezza, regolazione intelligente della corsa, durata estrema, manutenzione minima.</p>
+
+  <p>Un sistema pensato per scomparire quando non serve e diventare decisivo quando serve davvero. In un istante, il parabrezza torna cristallino. In un istante, la sicurezza torna tra le tue mani.</p>
+
+  <p>Dietro questa invenzione c’è un’idea semplice e visionaria: dare ai motociclisti la stessa sicurezza visiva che hanno sempre avuto solo le auto. Nessuno ci aveva mai pensato. Nessuno l’aveva mai realizzato. Oggi è realtà.</p>
+
+  <p>È l’inizio di una nuova categoria. È l’inizio di un nuovo standard di sicurezza. È l’inizio di un nuovo modo di guidare sotto la pioggia.</p>
+
+  <p><strong>Benvenuti nel futuro della mobilità su due ruote. Benvenuti nell’unico tergicristallo per scooter 100% brevettato e 100% italiano. Il primo. Il vero. Quello che cambia tutto.</strong></p>
+</section>
+
+
+<!-- VIDEO -->
+<section id="video">
+  <h2>XvistA™ in azione</h2>
+  <p>Guarda XvistA sotto pioggia, vento, buio e fulmini.</p>
+  <div class="video-box">
+  <!-- VIDEO YOUTUBE DA INSERIRE -->
+</div>
+</section>
+
+<script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("fade-in");
+  });
+
+  /* === SISTEMA TEMPORALE AVANZATO === */
+
+  const canvas = document.getElementById("stormCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let drops = [];
+for (let i = 0; i < 900; i++) {        // PIÙ GOCCE
+  drops.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    speed: 14 + Math.random() * 18,    // MOLTO PIÙ VELOCE
+    length: 18 + Math.random() * 25    // GOCCE PIÙ LUNGHE
+  });
+}
+
+
+ function drawRain() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "rgba(255,255,255,0.32)";
+    ctx.lineWidth = 1;
+
+    drops.forEach(d => {
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x + 6, d.y + d.length);
+      ctx.stroke();
+
+      d.y += d.speed;
+      if (d.y > canvas.height) {
+        d.y = -20;
+        d.x = Math.random() * canvas.width;
+      }
+    });
+
+    requestAnimationFrame(drawRain);
+}
+drawRain();
+</script>
+
+<!-- SCRIPT NUOVO COMPLETO -->
+<script>
+
+/* === AUDIO TEMPORALE === */
+const stormAudio = new Audio("audio-storm.mp3");
+stormAudio.volume = 0; // parte silenzioso per evitare blocchi
+stormAudio.loop = true;
+
+// Tentativo autoplay con fade-in
+stormAudio.play().then(() => {
+    setTimeout(() => {
+        stormAudio.volume = 0.80;
+    }, 300);
+}).catch(() => {
+    // Se Chrome blocca, sblocca al primo scroll
+    window.addEventListener("scroll", () => {
+        stormAudio.volume = 0.80;
+        stormAudio.play();
+    }, { once: true });
+});
+
+/* === SBLOCCO AUDIO UNIVERSALE (FUNZIONA SEMPRE) === */
+window.addEventListener("mousemove", () => {
+    stormAudio.muted = false;
+    stormAudio.volume = 0.80;
+    stormAudio.play();
+}, { once: true });
+
+/* === TOGGLE AUDIO (mute/unmute) === */
+const toggleBtn = document.getElementById("audioToggle");
+let muted = false;
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    muted = !muted;
+    stormAudio.muted = muted;
+    toggleBtn.textContent = muted ? "🔇" : "🔊";
+  });
+}
+
+
+/* === LAMPI CINEMATICI === */
+function lightningStrike() {
+
+  let flash1 = document.createElement("div");
+  flash1.style.position = "fixed";
+  flash1.style.top = 0;
+  flash1.style.left = 0;
+  flash1.style.width = "100vw";
+  flash1.style.height = "100vh";
+  flash1.style.background = "rgba(255,255,255," + (Math.random()*0.4 + 0.2) + ")";
+  flash1.style.zIndex = 5;
+  flash1.style.pointerEvents = "none";
+  flash1.style.transition = "opacity 0.25s ease";
+  document.body.appendChild(flash1);
+
+  setTimeout(() => { flash1.style.opacity = 0; }, 80);
+  setTimeout(() => { flash1.remove(); }, 350);
+
+  setTimeout(() => {
+    let flash2 = document.createElement("div");
+    flash2.style.position = "fixed";
+    flash2.style.top = 0;
+    flash2.style.left = 0;
+    flash2.style.width = "100vw";
+    flash2.style.height = "100vh";
+    flash2.style.background = "rgba(255,255,255," + (Math.random()*0.5 + 0.4) + ")";
+    flash2.style.zIndex = 5;
+    flash2.style.pointerEvents = "none";
+    flash2.style.transition = "opacity 0.20s ease";
+    document.body.appendChild(flash2);
+
+    setTimeout(() => { flash2.style.opacity = 0; }, 60);
+    setTimeout(() => { flash2.remove(); }, 300);
+  }, Math.random()*120 + 50);
+}
+
+/* === FREQUENZA LAMPI === */
+setInterval(() => {
+  if (Math.random() < 0.30) {
+    lightningStrike();
+  }
+}, 1200);
+
+</script>
+
+</body>
+</html>
+

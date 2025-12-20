@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>XvistA™ – Intro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+  }
+
+  /* CANVAS DELLA PIOGGIA */
+  #rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+  }
+
+  /* CONTENITORE LOGO */
+  .logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    animation: fadeInLogo 2.2s ease forwards;
+    z-index: 3;
+  }
+
+  .logo-title {
+    color: white;
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+  }
+
+  .logo-sub {
+    margin-top: 12px;
+    color: #ff0033;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeInLogo {
+    0% { opacity: 0; transform: translate(-50%, -40%); }
+    100% { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  /* Fade out schermo */
+  .fadeOut {
+    animation: fadeOutScreen 1.8s ease forwards;
+  }
+
+  @keyframes fadeOutScreen {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- Canvas della pioggia -->
+<canvas id="rain"></canvas>
+
+<!-- Logo Xvista -->
+<div class="logo-container">
+  <div class="logo-title">Xvista</div>
+  <div class="logo-sub">THE FUTURE OF SCOOTER VISIBILITY</div>
+</div>
+
+<script>
+  /* Effetto pioggia */
+  const canvas = document.getElementById('rain');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let drops = [];
+  for (let i = 0; i < 350; i++) {
+    drops.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      speed: 4 + Math.random() * 6,
+      length: 10 + Math.random() * 15
+    });
+  }
+
+  function animateRain() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "rgba(255,255,255,0.25)";
+    ctx.lineWidth = 1;
+
+    drops.forEach(d => {
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x, d.y + d.length);
+      ctx.stroke();
+
+      d.y += d.speed;
+      if (d.y > canvas.height) {
+        d.y = -10;
+        d.x = Math.random() * canvas.width;
+      }
+    });
+
+    requestAnimationFrame(animateRain);
+  }
+  animateRain();
+
+  /* Dopo 4,2 secondi → fade out + redirect */
+  setTimeout(() => {
+    document.body.classList.add("fadeOut");
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 1700);
+  }, 4200);
+</script>
+
+</body>
+</html>
