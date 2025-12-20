@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XvistA™ – Il Prodotto</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --accent: #ff0033;
+      --soft: rgba(255,255,255,0.85);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+    }
+
+    /* === NAVBAR === */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 65px;
+      z-index: 999999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: #ff0033;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding-bottom: 6px;
+      border-bottom: 2px solid transparent;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      border-bottom: 2px solid #ff0033;
+    }
+
+    .nav-links a.active {
+      color: #ffffff;
+      border-bottom: 2px solid #ff0033;
+    }
+
+    /* === CONTENUTO === */
+    .page {
+      padding: 140px 12vw 90px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 60px;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--soft);
+    }
+
+    p {
+      line-height: 1.85;
+      font-size: 17px;
+      margin-top: 18px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    ul {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .page {
+        padding: 120px 20px 70px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      p, li {
+        font-size: 15px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <nav class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="prodotto.html" class="active">Prodotto</a>
+    <a href="home.html#video">Video</a>
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="contatti.html">Contatti</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<!-- CONTENUTO -->
+<div class="page">
+
+  <h1>Il prodotto</h1>
+
+  <p>
+    <span class="highlight">XvistA™</span> è il primo sistema di tergicristallo progettato
+    <span class="highlight">esclusivamente per scooter</span>.
+    Non è un accessorio adattato, ma una tecnologia sviluppata da zero
+    per risolvere un problema reale: la perdita di visibilità sotto la pioggia.
+  </p>
+
+  <h2>Il problema</h2>
+  <p>
+    Pioggia, gocce sul parabrezza, riflessi notturni, vento.
+    Ogni motociclista conosce questa situazione: visibilità ridotta,
+    una mano che si stacca dal manubrio, un attimo di distrazione.
+  </p>
+
+  <p>
+    Prima di XvistA™, non esisteva una soluzione dedicata agli scooter.
+    Solo compromessi. Solo adattamenti.
+  </p>
+
+  <h2>La soluzione</h2>
+  <p>
+    XvistA™ ripristina la visibilità in tempo reale,
+    mantenendo il parabrezza pulito anche in condizioni estreme.
+    Il sistema è progettato per essere <span class="highlight">compatto,
+    silenzioso, aerodinamico e affidabile</span>.
+  </p>
+
+  <h2>Caratteristiche principali</h2>
+  <ul>
+    <li>Motore miniaturizzato ad alta efficienza</li>
+    <li>Braccetto a basso attrito in lega leggera</li>
+    <li>Gomma tecnica ad alte prestazioni</li>
+    <li>Regolazione intelligente della corsa</li>
+    <li>Aggancio universale per i principali parabrezza</li>
+    <li>Consumo energetico minimo</li>
+    <li>Manutenzione ridotta</li>
+  </ul>
+
+  <h2>Un nuovo standard</h2>
+  <p>
+    XvistA™ non migliora semplicemente l’esperienza di guida:
+    <span class="highlight">introduce una nuova categoria</span>.
+    La stessa sicurezza visiva che per decenni è stata riservata alle auto,
+    oggi arriva finalmente su due ruote.
+  </p>
+
+  <p>
+    È una tecnologia pensata per scomparire quando non serve
+    e diventare decisiva quando serve davvero.
+  </p>
+
+</div>
+
+</body>
+</html>
