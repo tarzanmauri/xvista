@@ -96,6 +96,57 @@
   strong {
     color: white;
   }
+/* =========================
+   MOBILE FIX DEFINITIVO
+   ========================= */
+@media (max-width: 768px) {
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* === NAVBAR MOBILE ORDINATA === */
+  .nav {
+    height: auto;
+    padding: 12px 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  /* === CONTENUTO === */
+  .page {
+    padding: 120px 20px 70px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+
 
 </style>
 </head>
