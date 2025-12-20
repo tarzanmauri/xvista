@@ -213,15 +213,10 @@ iframe {
   border-radius: 14px;
 }
 
-/* =========================
-   MOBILE FIX DEFINITIVO
-   ========================= */
-/* =========================
-   MOBILE FIX DEFINITIVO
-   ========================= */
+
 @media (max-width: 768px) {
 
-  /* blocca scroll orizzontale */
+  /* blocca scroll orizzontale della pagina */
   html, body {
     width: 100%;
     overflow-x: hidden;
@@ -232,21 +227,29 @@ iframe {
     box-sizing: border-box;
   }
 
-  /* === NAVBAR MOBILE ORDINATA === */
+  /* === NAVBAR MOBILE SCORRIBILE ORIZZONTALMENTE === */
   .nav {
-  position: static;
-  height: auto;
-  padding: 12px 0;
-}
+    position: static;              /* se vuoi fissa su mobile, cambia in fixed */
+    height: auto;
+    padding: 12px 0;
+    overflow-x: auto;              /* permette lo scroll orizzontale */
+    -webkit-overflow-scrolling: touch; /* swipe fluido su iOS */
+    -ms-overflow-style: none;      /* nasconde scrollbar su IE/Edge */
+    scrollbar-width: none;         /* nasconde scrollbar su Firefox */
+  }
 
+  .nav::-webkit-scrollbar {
+    display: none;                 /* nasconde scrollbar su Chrome/Safari */
+  }
 
- .nav-links {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 22px;
-}
-
+  .nav-links {
+    flex-direction: row;
+    flex-wrap: nowrap;             /* tutto in una riga sola */
+    white-space: nowrap;           /* sicurezza extra */
+    justify-content: flex-start;   /* allinea a sinistra per poter scorrere */
+    gap: 14px 22px;
+    min-width: max-content;        /* fa occupare tutto lo spazio necessario */
+  }
 
   .nav-links a {
     font-size: 16px;
@@ -321,7 +324,6 @@ iframe {
     max-width: 100%;
   }
 }
-
 
 </style>
 </head>
