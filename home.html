@@ -213,6 +213,55 @@ iframe {
   border-radius: 14px;
 }
 
+/* === MOBILE FIX === */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 80px 20px 40px;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .hero-video {
+    margin-top: 30px;
+    padding: 0 10px;
+  }
+
+  .video-loop {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 </style>
 </head>
 
