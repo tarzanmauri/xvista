@@ -162,16 +162,17 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 0px;     /* PRIMA era troppo giù */
+  padding-top: 90px;     /* PRIMA era troppo giù */
   padding-bottom: 0px;
 }
 
-/* video loop */
 .video-loop {
   width: 100%;
   max-width: 1100px;
   border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  box-shadow:
+    0 0 25px rgba(255, 0, 51, 0.45),
+    0 0 60px rgba(255, 0, 51, 0.25);
 }
 
 /* sezioni generiche */
@@ -259,7 +260,7 @@ iframe {
   /* HERO */
   .hero {
     height: auto;
-    padding: 80px 16px 32px;
+    padding: 90px 20px 20px;
   }
 
   .hero-title {
@@ -352,9 +353,7 @@ iframe {
 
   <div class="hero-cta">
     <button class="btn btn-primary" onclick="document.getElementById('prodotto').scrollIntoView({behavior:'smooth'})">Scopri XvistA™</button>
-    <button class="btn btn-ghost" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Guarda il video</button>
   </div>
-</div>
 
 <!-- VIDEO HERO LOOP -->
 <section class="hero-video">
@@ -389,8 +388,8 @@ iframe {
 
 <!-- VIDEO -->
 <section id="video">
-  <h2>XvistA™ in azione</h2>
-  <p>Guarda XvistA sotto pioggia, vento, buio e fulmini.</p>
+  <h2></h2>
+  <p></p>
   <div class="video-box">
   <!-- VIDEO YOUTUBE DA INSERIRE -->
 </div>

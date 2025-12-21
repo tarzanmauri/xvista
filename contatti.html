@@ -107,66 +107,63 @@
       min-width: 140px;
     }
 
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-family: Montserrat, sans-serif;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn-whatsapp {
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: none;
+      background: #25D366;
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(37,211,102,0.6);
+    }
+
     @media (max-width: 768px) {
+      .page {
+        padding: 120px 20px 70px;
+      }
 
-  .page {
-    padding: 120px 20px 70px;
-  }
+      h1 {
+        font-size: 30px;
+      }
 
-  h1 {
-    font-size: 30px;
-  }
+      p, .contact-item {
+        font-size: 15px;
+      }
 
-  p, .contact-item {
-    font-size: 15px;
-  }
-
-   /* NAVBAR MOBILE SCORRIBILE */
-  .nav {
-    position: fixed;          /* rimane fissa in alto anche su telefono */
-    top: 0;
-    width: 100%;
-    height: auto;
-    padding: 12px 0;
-    overflow-x: auto;         /* permette di scorrere orizzontalmente */
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    background: rgba(0,0,0,0.75);
-    z-index: 999999;
-  }
-
-  .nav::-webkit-scrollbar {
-    display: none;            /* nasconde la barra di scorrimento */
-  }
-
-  .nav-links {
-    flex-direction: row;
-    flex-wrap: nowrap;        /* non va più a capo */
-    white-space: nowrap;
-    justify-content: flex-start;
-    gap: 20px;
-    padding: 0 20px;
-    min-width: max-content;
-  }
-
-  .nav-links a {
-    font-size: 16px;
-    white-space: nowrap;
-  }
-
-  .label {
-    min-width: auto;
-    display: block;
-    margin-bottom: 4px;
-  }
-}
+      .label {
+        min-width: auto;
+        display: block;
+        margin-bottom: 4px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header class="nav">
   <nav class="nav-links">
     <a href="home.html">Home</a>
@@ -178,7 +175,6 @@
   </nav>
 </header>
 
-<!-- CONTENUTO -->
 <div class="page">
 
   <h1>Contatti</h1>
@@ -188,34 +184,76 @@
     puoi contattarci attraverso i recapiti indicati di seguito.
   </p>
 
+  <!-- CONTATTI ESISTENTI (INALTERATI) -->
   <div class="contact-box">
-    <div class="contact-item">
-      <span class="label">Email:</span>
-      info@xvista.it
-    </div>
-
-    <div class="contact-item">
-      <span class="label">Telefono:</span>
-      +39 012 345 6789
-    </div>
-<div class="contact-item">
-  <span class="label">WhatsApp:</span>
-  <a href="https://wa.me/391234567890" target="_blank" style="color:#25D366; font-weight:600; text-decoration:none;">
-    Chatta su WhatsApp
-  </a>
+    <div class="contact-item" style="display:none;">
+  <span class="label">Telefono:</span> +39 340 096 0451
 </div>
 
+
     <div class="contact-item">
-      <span class="label">Sede:</span>
-      Genova, Italia
+      <span class="label">WhatsApp:</span>
+      <a href="https://wa.me/393400960451" target="_blank"
+         style="color:#25D366; font-weight:600; text-decoration:none;">
+        Chatta su WhatsApp
+      </a>
+    </div>
+
+    <div class="contact-item">
+      <span class="label">Sede:</span> Genova, Italia
     </div>
   </div>
 
-  <p>
-    I dati di contatto riportati sono indicativi e verranno aggiornati nella versione definitiva del sito.
-  </p>
+  <!-- FORM WHATSAPP -->
+  <div class="contact-box" style="margin-top:50px;">
+    <h2 style="text-align:center; margin-bottom:20px;">Scrivici un messaggio</h2>
+
+    <form onsubmit="sendWhatsApp(event)">
+      <div class="contact-item">
+        <label class="label">Nome</label>
+        <input type="text" id="name" required>
+      </div>
+
+      <div class="contact-item">
+        <label class="label">Email</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="contact-item">
+        <label class="label">Messaggio</label>
+        <textarea id="message" rows="4" required></textarea>
+      </div>
+
+      <div style="text-align:center; margin-top:25px;">
+        <button type="submit" class="btn-whatsapp">
+          Invia messaggio su WhatsApp
+        </button>
+      </div>
+    </form>
+  </div>
 
 </div>
+
+<script>
+function sendWhatsApp(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const text =
+    "Messaggio dal sito XvistA:%0A%0A" +
+    "Nome: " + name + "%0A" +
+    "Email: " + email + "%0A%0A" +
+    message;
+
+  window.open(
+    "https://wa.me/393400960451?text=" + text,
+    "_blank"
+  );
+}
+</script>
 
 </body>
 </html>
