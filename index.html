@@ -15,16 +15,16 @@
     height: 100vh;
   }
 
-  /* CANVAS DELLA PIOGGIA */
-  #rain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 1;
-  }
+  #stormCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
 
   /* CONTENITORE LOGO */
   .logo-container {
@@ -75,7 +75,8 @@
 <body>
 
 <!-- Canvas della pioggia -->
-<canvas id="rain"></canvas>
+<canvas id="stormCanvas"></canvas>
+
 
 <!-- Logo Xvista -->
 <div class="logo-container">
@@ -85,44 +86,44 @@
 
 <script>
   /* Effetto pioggia */
-  const canvas = document.getElementById('rain');
-  const ctx = canvas.getContext('2d');
+  const canvas = document.getElementById("stormCanvas");
+  const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   let drops = [];
-  for (let i = 0; i < 350; i++) {
+  for (let i = 0; i < 900; i++) {
     drops.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      speed: 4 + Math.random() * 6,
-      length: 10 + Math.random() * 15
+      speed: 14 + Math.random() * 18,
+      length: 18 + Math.random() * 25
     });
   }
 
-  function animateRain() {
+  function drawRain() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "rgba(255,255,255,0.25)";
+    ctx.strokeStyle = "rgba(255,255,255,0.32)";
     ctx.lineWidth = 1;
 
     drops.forEach(d => {
       ctx.beginPath();
       ctx.moveTo(d.x, d.y);
-      ctx.lineTo(d.x, d.y + d.length);
+      ctx.lineTo(d.x + 6, d.y + d.length);
       ctx.stroke();
 
       d.y += d.speed;
       if (d.y > canvas.height) {
-        d.y = -10;
+        d.y = -20;
         d.x = Math.random() * canvas.width;
       }
     });
 
-    requestAnimationFrame(animateRain);
+    requestAnimationFrame(drawRain);
   }
-  animateRain();
+  drawRain();
 
-  /* Dopo 4,2 secondi → fade out + redirect */
+  /* === DOPO 4,2 SECONDI → FADE OUT + REDIRECT (COME PRIMA) === */
   setTimeout(() => {
     document.body.classList.add("fadeOut");
     setTimeout(() => {
