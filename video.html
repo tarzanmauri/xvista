@@ -153,7 +153,7 @@
         padding: 90px 16px 70px;
       }
 
-      h1 {
+           h1 {
         font-size: 28px;
       }
 
@@ -161,7 +161,54 @@
         height: 180px;
       }
     }
+
+  
+   .image-compare {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.image-compare img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.image-compare img:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .image-compare {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* === OVERLAY (QUESTO MANCAVA) === */
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+}
+
+#overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  cursor: pointer;
+}
+
   </style>
+
 </head>
 <body>
 
@@ -180,24 +227,28 @@
   <h1>Video</h1>
   <p>Dimostrazioni reali di XvistA™ in condizioni estreme.</p>
 
-  <div class="video-grid">
-
-    <!-- VIDEO 1 -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
-      <p>Test sotto pioggia intensa</p>
-    </div>
-
-    <!-- VIDEO 2 -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
-      <p>Guida notturna e visibilità</p>
-    </div>
-
-    <!-- Aggiungi altri video qui se vuoi -->
-
-  </div>
+  <div class="image-compare">
+  <img src="Immagini/no.jpeg" alt="No" onclick="openImg(this.src)">
+  <img src="Immagini/si.jpeg" alt="Sì" onclick="openImg(this.src)">
 </div>
+
+<div id="overlay" onclick="closeImg()">
+  <img id="overlayImg">
+</div>
+
+</div> 
+
+<script>
+  function openImg(src) {
+    document.getElementById("overlayImg").src = src;
+    document.getElementById("overlay").style.display = "flex";
+  }
+
+  function closeImg() {
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+
 
 </body>
 </html>
