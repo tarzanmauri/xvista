@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XvistA™ – Video</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #000;
@@ -12,6 +14,7 @@
       --accent: #ff0033;
       --soft: rgba(255,255,255,0.85);
     }
+
     body {
       margin: 0;
       background: var(--bg);
@@ -25,38 +28,25 @@
       top: 0;
       width: 100%;
       height: 65px;
-      z-index: 999999;
+      z-index: 999999999;
       display: flex;
       justify-content: center;
       align-items: center;
       background: rgba(0,0,0,0.55);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 50px;
     }
 
     .nav-links a {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 600;
       font-size: 16px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid transparent;
-      transition: 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: #ffffff;
-      border-bottom: 2px solid var(--accent);
+      font-weight: 600;
+      padding: 6px 14px;
     }
 
     .nav-links a.active {
-      color: #ffffff;
+      color: #fff;
       border-bottom: 2px solid var(--accent);
     }
 
@@ -64,20 +54,13 @@
     .page {
       max-width: 1100px;
       margin: auto;
-      padding: 100px 20px 80px; /* spazio extra per navbar fissa */
+      padding: 100px 20px 80px;
     }
 
     h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #ffffff;
-  text-shadow:
-    0 0 10px rgba(255,255,255,0.6),
-    0 0 22px rgba(255,255,255,0.35);
-}
-
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
     p {
       text-align: center;
@@ -85,7 +68,7 @@
       margin-bottom: 60px;
     }
 
-    /* GRID VIDEO */
+    /* VIDEO */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -96,12 +79,11 @@
       background: rgba(255,255,255,0.05);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
 
     .video-card iframe {
       width: 100%;
-      height: 200px;
+      aspect-ratio: 16 / 9;
       border: none;
     }
 
@@ -109,70 +91,62 @@
       padding: 14px;
       margin: 0;
       font-size: 14px;
-      text-align: left;
-      color: var(--soft);
+    }
+
+    /* IMMAGINI */
+    .image-section {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .image-box {
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .image-box img {
+      width: 100%;
+      display: block;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999999999;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+    }
+
+    .lightbox.active {
+      display: flex;
     }
 
     /* MOBILE */
     @media (max-width: 768px) {
-      /* NAVBAR MOBILE SCORRIBILE */
-      .nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: auto;
-        padding: 12px 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        background: rgba(0,0,0,0.75);
-        z-index: 999999;
-      }
-
-      .nav::-webkit-scrollbar {
-        display: none;
-      }
-
-      .nav-links {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        justify-content: flex-start;
-        gap: 20px;
-        padding: 0 20px;
-        min-width: max-content;
-      }
-
-      .nav-links a {
-        font-size: 16px;
-        white-space: nowrap;
-      }
-
-      .page {
-        padding: 90px 16px 70px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      .video-card iframe {
-        height: 180px;
+      .image-section {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
 
 <header class="nav">
   <nav class="nav-links">
     <a href="home.html">Home</a>
-    <a href="prodotto.html">Prodotto</a>
     <a href="video.html" class="active">Video</a>
-    <a href="chi-siamo.html">Chi siamo</a>
-    <a href="contatti.html">Contatti</a>
-    <a href="privacy.html">Privacy</a>
   </nav>
 </header>
 
@@ -181,23 +155,56 @@
   <p>Dimostrazioni reali di XvistA™ in condizioni estreme.</p>
 
   <div class="video-grid">
-
-    <!-- VIDEO 1 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" loading="lazy" allowfullscreen></iframe>
       <p>Test sotto pioggia intensa</p>
     </div>
 
-    <!-- VIDEO 2 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" loading="lazy" allowfullscreen></iframe>
       <p>Guida notturna e visibilità</p>
     </div>
+  </div>
 
-    <!-- Aggiungi altri video qui se vuoi -->
+  <div class="image-section">
+    <div class="image-box">
+      <img src="Immagini/no.jpeg" alt="XvistA dettaglio 1">
+    </div>
 
+    <div class="image-box">
+      <img src="Immagini/si.jpeg" alt="XvistA dettaglio 2">
+    </div>
   </div>
 </div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+
+  document.querySelectorAll(".image-box img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+    lightboxImg.src = "";
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+  });
+</script>
 
 </body>
 </html>
