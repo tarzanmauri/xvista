@@ -22,7 +22,9 @@
       font-family: "Montserrat", sans-serif;
     }
 
-    /* NAVBAR */
+    /* =========================
+       NAVBAR (IDENTICA A HOME)
+       ========================= */
     .nav {
       position: fixed;
       top: 0;
@@ -35,6 +37,14 @@
       background: rgba(0,0,0,0.55);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
 
     .nav-links a {
@@ -43,14 +53,36 @@
       font-size: 16px;
       font-weight: 600;
       padding: 6px 14px;
+      border-bottom: 2px solid transparent;
+      transition: 0.25s ease;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
     }
 
-    .nav-links a.active {
-      color: #fff;
+    .nav-links a:hover {
+      color: #ffffff;
       border-bottom: 2px solid var(--accent);
     }
 
-    /* CONTENUTO */
+    .nav-links a.active {
+      color: #ffffff;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .nav-home {
+      flex-shrink: 0;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+
+    .nav-scroll {
+      display: flex;
+    }
+
+    /* =========================
+       CONTENUTO
+       ========================= */
     .page {
       max-width: 1100px;
       margin: auto;
@@ -58,8 +90,14 @@
     }
 
     h1 {
-      text-align: center;
+      font-size: 42px;
+      font-weight: 700;
       margin-bottom: 30px;
+      text-align: center;
+      color: #ffffff;
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 22px rgba(255,255,255,0.35);
     }
 
     p {
@@ -68,7 +106,9 @@
       margin-bottom: 60px;
     }
 
-    /* VIDEO */
+    /* =========================
+       GRID VIDEO
+       ========================= */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -79,11 +119,12 @@
       background: rgba(255,255,255,0.05);
       border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
 
     .video-card iframe {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: 200px;
       border: none;
     }
 
@@ -91,9 +132,13 @@
       padding: 14px;
       margin: 0;
       font-size: 14px;
+      text-align: left;
+      color: var(--soft);
     }
 
-    /* IMMAGINI */
+    /* =========================
+       IMMAGINI AGGIUNTE
+       ========================= */
     .image-section {
       margin-top: 70px;
       display: grid;
@@ -102,8 +147,10 @@
     }
 
     .image-box {
+      background: rgba(255,255,255,0.05);
       border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
       cursor: zoom-in;
     }
 
@@ -123,17 +170,49 @@
       z-index: 9999999999;
     }
 
+    .lightbox.active {
+      display: flex;
+    }
+
     .lightbox img {
       max-width: 95%;
       max-height: 95%;
     }
 
-    .lightbox.active {
-      display: flex;
-    }
-
-    /* MOBILE */
+    /* =========================
+       MOBILE
+       ========================= */
     @media (max-width: 768px) {
+
+      .nav {
+        position: static;
+        height: auto;
+        padding: 12px 0;
+        overflow: hidden;
+      }
+
+      .nav-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .nav-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .page {
+        padding: 90px 16px 70px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .video-card iframe {
+        height: 180px;
+      }
+
       .image-section {
         grid-template-columns: 1fr;
       }
@@ -143,38 +222,55 @@
 
 <body>
 
+<!-- NAVBAR -->
 <header class="nav">
   <nav class="nav-links">
-    <a href="home.html">Home</a>
-    <a href="video.html" class="active">Video</a>
+
+    <a href="home.html" class="nav-home">Home</a>
+
+    <div class="nav-scroll">
+      <a href="prodotto.html">Prodotto</a>
+      <a href="video.html" class="active">Video</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+
   </nav>
 </header>
 
+<!-- CONTENUTO -->
 <div class="page">
   <h1>Video</h1>
   <p>Dimostrazioni reali di XvistA™ in condizioni estreme.</p>
 
   <div class="video-grid">
+
+    <!-- VIDEO 1 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
       <p>Test sotto pioggia intensa</p>
     </div>
 
+    <!-- VIDEO 2 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
       <p>Guida notturna e visibilità</p>
     </div>
+
   </div>
 
+  <!-- IMMAGINI SOTTO I VIDEO -->
   <div class="image-section">
     <div class="image-box">
-      <img src="Immagini/no.jpeg" alt="XvistA dettaglio 1">
+      <img src="Immagini/si.jpeg" alt="XvistA immagine sinistra">
     </div>
 
     <div class="image-box">
-      <img src="Immagini/si.jpeg" alt="XvistA dettaglio 2">
+      <img src="Immagini/no.jpeg" alt="XvistA immagine destra">
     </div>
   </div>
+
 </div>
 
 <!-- LIGHTBOX -->
