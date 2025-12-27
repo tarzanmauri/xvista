@@ -173,6 +173,9 @@
 .image-compare img {
   width: 100%;
   max-width: 500px;
+  height: 280px;          /* ← QUESTO È IL PUNTO */
+  object-fit: contain;    /* oppure cover */
+  background: #000;
   border-radius: 16px;
   cursor: pointer;
   border: 2px solid var(--accent);
